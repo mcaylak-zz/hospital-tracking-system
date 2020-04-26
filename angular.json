@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hospital-tracking-system"
+    }
+  },
+  "defaultProject": "hospital-tracking-system",
+  "cli": {
+    "analytics": "2d80acc4-fc75-4ad1-81ab-d81b5dda762a"
+  }
 }
