@@ -1,14 +1,1 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <svg-container height="500">
-        <svg-text *ngFor="let item of floorCoordinate"  text="{{item.floodName}}" [x]="item.x" [y]="item.y">
-          <svg-rect color="{{item.color}}" height="{{item.height}}"  width="{{item.witdh}}" x="{{item.x}}" y="{{item.y}}">
-            <svg-ellipse (mouseOverEvent)="getUserName(item.name)" *ngFor="let item of coordinates" [x]="item.x" [y]="item.y" height="10" width="10" color="red" > </svg-ellipse>
-          </svg-rect>
-        </svg-text>
-      </svg-container>
-    </div>
-  </div>
-</div>
-
+<router-outlet></router-outlet>
