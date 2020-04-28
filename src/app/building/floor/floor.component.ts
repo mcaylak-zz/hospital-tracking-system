@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {$e} from "codelyzer/angular/styles/chars";
+import {BuildingService} from "../../shared/services/building.service";
+import building from "../../shared/models/building";
 
 @Component({
   selector: 'app-floor',
@@ -7,30 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FloorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private buildingService: BuildingService) { }
+
+  flood: number = 0;
+  buildings: building ;
+  isActive: boolean = true;
+  userName: string = "";
 
   ngOnInit(): void {
+    this.getCoordinatesDb();
   }
 
-  title = 'hospital-tracking-system';
-  coordinates = [
-    {x: 10, y: 50,name:"Ahmet"},
-    {x: 50, y: 20,name:"Aytekin"},
-    {x: 90, y: 100,name:"Mehmet"},
-    {x: 500, y: 300,name:"Muhammed"},
-    {x: 600, y: 66,name:"zaa"},
-  ];
-
-  floorCoordinate = [
-    {x: 0, y:0 , witdh: 500, height:200,color: "#DDBFB9",floodName: "A odası"},
-    {x: 550, y:0 , witdh: 300, height:150, color: "#DCD48A",floodName: "B odası"},
-    {x: 0, y:250 , witdh: 250, height:80, color: "#9FC6DC",floodName: "C odası"},
-    {x: 300, y:250 , witdh: 250, height:80, color: "#9FC6DC",floodName: "D odası"},
-    {x: 600, y:200 , witdh: 250, height:130, color: "#9FC6DC",floodName: "E odası"},
-  ]
-
-  getUserName(userName: any) {
-    console.log(userName);
+  getCoordinatesDb() {
+    this.buildingService.getBuildingsWithId(1).subscribe(x=>{
+      this.buildings = x;
+    })
   }
 
+  getFlood(flood: string) {
+    this.flood = Number(flood);
+  }
+
+  floodClose($event: boolean) {
+    console.log($event);
+    this.isActive = $event;
+  }
 }

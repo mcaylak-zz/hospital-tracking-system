@@ -1,0 +1,13 @@
+<div>
+  <svg-container height="500" [viewBox]="[0,0,850,300]">
+    <svg-text *ngFor="let item of areasCoordinates"  text="{{item.type}}" [x]="item.xcoordinate" [y]="item.ycoordinate">
+      <svg-rect color="{{getColor()}}" height="{{item.height}}"  width="{{item.weight}}" x="{{item.xcoordinate}}" y="{{item.ycoordinate}}">
+        <svg-ellipse (mouseOverEvent)="getUserName(item.name)" *ngFor="let item of getArrayOne()" [x]="item.x" [y]="item.y" height="10" width="10" color="red" > </svg-ellipse>
+      </svg-rect>
+    </svg-text>
+  </svg-container>
+</div>
+
+
+
+

@@ -1,11 +1,40 @@
-  <div class="row">
-    <div class="col-md-12">
-      <svg-container height="500">
-        <svg-text *ngFor="let item of floorCoordinate"  text="{{item.floodName}}" [x]="item.x" [y]="item.y">
-          <svg-rect color="{{item.color}}" height="{{item.height}}"  width="{{item.witdh}}" x="{{item.x}}" y="{{item.y}}">
-            <svg-ellipse (mouseOverEvent)="getUserName(item.name)" *ngFor="let item of coordinates" [x]="item.x" [y]="item.y" height="10" width="10" color="red" > </svg-ellipse>
-          </svg-rect>
-        </svg-text>
-      </svg-container>
+<div class="container">
+  <div class="row" *ngIf="this.buildings != null && isActive">
+    <div class="col-md-3 pt-5 pl-5 pr-5" *ngFor="let item of this.buildings.floors">
+      <mat-card style="background-color: #3f51b5">
+        <div class="row justify-content-center">
+          <h3>{{item.no}} Kata Ait Genel Bilgiler</h3>
+        </div>
+        <div class="row">
+          <h5>Kapasite: </h5> <span> 100 </span>
+        </div>
+        <div class="row">
+          <h5>Oda Sayısı: </h5> <span> {{item.areas.length}} </span>
+        </div>
+        <div class="row justify-content-center">
+          <button mat-raised-button color="warn" (click)="getFlood(item.no)">Kat Haritasi</button>
+        </div>
+      </mat-card>
     </div>
   </div>
+  <div *ngIf="flood != 0" class="pt-5">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2 pl-5">
+        <a href="javascript:" (click)="this.isActive = true; this.flood = 0; this.userName = ''" ><span class="material-icons">
+          keyboard_backspace
+        </span></a>
+      </div>
+      <div class="col-md-6">
+        <h1>{{flood}} Katına Ait Bilgiler</h1>
+      </div>
+    </div>
+    <div class="row">
+      {{this.userName}}
+    </div>
+    <div class="pt-5">
+      <app-area (isActive)="floodClose($event)" (userName)="userName = $event" [master]="flood" [area]="this.buildings.floors[0].areas"></app-area>
+    </div>
+  </div>
+</div>
+
