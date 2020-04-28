@@ -33,7 +33,7 @@
       {{this.userName}}
     </div>
     <div class="pt-5">
-      <app-area (isActive)="floodClose($event)" (userName)="userName = $event" [master]="flood" [area]="this.buildings.floors[0].areas"></app-area>
+      <app-area [userCoordinates]="users" (isActive)="floodClose($event)" (userName)="userName = $event" [master]="flood" [area]="this.buildings.floors[0].areas"></app-area>
     </div>
   </div>
 </div>

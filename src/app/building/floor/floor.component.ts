@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {$e} from "codelyzer/angular/styles/chars";
 import {BuildingService} from "../../shared/services/building.service";
 import building from "../../shared/models/building";
+import User from "../../shared/models/user";
 
 @Component({
   selector: 'app-floor',
@@ -16,14 +17,23 @@ export class FloorComponent implements OnInit {
   buildings: building ;
   isActive: boolean = true;
   userName: string = "";
+  users: User[] ;
 
   ngOnInit(): void {
     this.getCoordinatesDb();
+    this.getAllUserCoordinates();
   }
 
   getCoordinatesDb() {
     this.buildingService.getBuildingsWithId(1).subscribe(x=>{
+      console.log(x);
       this.buildings = x;
+    })
+  }
+
+  getAllUserCoordinates(){
+    this.buildingService.getAllUserCoordinates().subscribe(x=>{
+      this.users = x;
     })
   }
 
@@ -32,7 +42,6 @@ export class FloorComponent implements OnInit {
   }
 
   floodClose($event: boolean) {
-    console.log($event);
     this.isActive = $event;
   }
 }
