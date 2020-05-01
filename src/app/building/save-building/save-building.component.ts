@@ -32,4 +32,7 @@ export class SaveBuildingComponent implements OnInit {
     console.warn('Your order has been submitted', customerData);
   }
 
+  UpdateUser() {
+
+  }
 }
