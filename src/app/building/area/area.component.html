@@ -1,10 +1,8 @@
 <div>
   <svg-container height="500" [viewBox]="[0,0,850,300]">
-    <svg-text *ngFor="let item of areasCoordinates"  text="{{item.type}}" [x]="item.xcoordinate" [y]="item.ycoordinate">
+    <svg-text *ngFor="let item of this.activeFloor.areas"  text="{{item.type}}" [x]="item.xcoordinate" [y]="item.ycoordinate">
       <svg-rect color="{{getColor()}}" height="{{item.height}}"  width="{{item.weight}}" x="{{item.xcoordinate}}" y="{{item.ycoordinate}}">
-        <div *ngFor="let user of this.userCoordinates">
-          <svg-ellipse (mouseOverEvent)="getUserName(user.name)" *ngFor="let item of user.coordinates" [x]="item.xcoordinate" [y]="item.ycoordinate" height="10" width="10" [color]="getPointColor(user.name)" > </svg-ellipse>
-        </div>
+        <svg-text *ngFor="let user of item.users; let i = index "  text="{{user.name}}" x="{{item.xcoordinate}}" y="{{i * 20 + 20}}"></svg-text>
       </svg-rect>
     </svg-text>
   </svg-container>

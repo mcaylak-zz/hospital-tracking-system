@@ -1,9 +1,9 @@
-import Coordinate from "./coordinate";
+import Area from "./area";
 
 export default class User {
   name: string;
   surname: string;
   email: string;
   phoneNo: string;
-  coordinates: Coordinate[];
+  areas: Area[];
 }

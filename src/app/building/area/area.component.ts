@@ -2,6 +2,9 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {BuildingService} from "../../shared/services/building.service";
 import area from "../../shared/models/area";
 import User from "../../shared/models/user";
+import {FloorService} from "../../shared/services/floor.service";
+import Floor from "../../shared/models/floor";
+import floor from "../../shared/models/floor";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,18 +14,17 @@ import User from "../../shared/models/user";
 })
 export class AreaComponent implements OnInit {
 
-  @Input('master') flood: number;
+  @Input('floorId') floorId: number;
+  @Input('activeFloor') activeFloor: floor;
   @Input('area') areasCoordinates: area[] = [];
-  @Input('userCoordinates') userCoordinates: User[] = [];
   @Output() isActive = new EventEmitter<boolean>();
   @Output() userName = new EventEmitter<string>();
 
   userColors: userColor[] = [];
 
-  constructor(private buildingService: BuildingService) { }
+  constructor(private floorService: FloorService) { }
 
   ngOnInit(): void {
-    console.log(this.userCoordinates);
     this.setPointColors();
     this.isActive.emit(false);
   }
@@ -48,6 +50,7 @@ export class AreaComponent implements OnInit {
 
   private setPointColors() {
     let status = true;
+    /*
     this.userCoordinates.forEach(x=>{
       this.userColors.forEach(y=>{
         if(x.name == y.name)
@@ -61,6 +64,7 @@ export class AreaComponent implements OnInit {
       }
       status = true;
     })
+     */
   }
   private getRandomColor(): string {
     let letters = '0123456789ABCDEF';

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {$e} from "codelyzer/angular/styles/chars";
 import {BuildingService} from "../../shared/services/building.service";
 import building from "../../shared/models/building";
 import User from "../../shared/models/user";
+import Floor from "../../shared/models/floor";
 
 @Component({
   selector: 'app-floor',
@@ -10,10 +11,11 @@ import User from "../../shared/models/user";
   styleUrls: ['./floor.component.css']
 })
 export class FloorComponent implements OnInit {
+  floor: Floor = new Floor();
 
   constructor(private buildingService: BuildingService) { }
 
-  flood: number = 0;
+  floorId: number = 0;
   buildings: building ;
   isActive: boolean = true;
   userName: string = "";
@@ -37,8 +39,9 @@ export class FloorComponent implements OnInit {
     })
   }
 
-  getFlood(flood: string) {
-    this.flood = Number(flood);
+  getFlood(id: number,floor: Floor) {
+    this.floor = floor;
+    this.floorId = id;
   }
 
   floodClose($event: boolean) {

@@ -16,7 +16,7 @@ export class BuildingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.initializeWebSocketConnection();
+    //this.initializeWebSocketConnection();
   }
 
 
