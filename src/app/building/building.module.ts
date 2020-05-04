@@ -19,25 +19,27 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import { AreaComponent } from './area/area.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {DxVectorMapModule} from "devextreme-angular";
 
 
 @NgModule({
   declarations: [BuildingComponent, FloorComponent, HomePageComponent, SaveBuildingComponent, AreaComponent],
-  imports: [
-    CommonModule,
-    BuildingRoutingModule,
-    NgxSvgModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTabsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatTooltipModule
-  ]
+    imports: [
+        CommonModule,
+        BuildingRoutingModule,
+        NgxSvgModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTabsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatTooltipModule,
+        DxVectorMapModule
+    ]
 })
 export class BuildingModule { }
